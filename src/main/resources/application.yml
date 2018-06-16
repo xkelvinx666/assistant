@@ -1,0 +1,16 @@
+spring:
+  http:
+    encoding:
+      force: true
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/d_assitant?characterEncoding=UTF8
+      username: root
+      password: 798998203
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+  aop:
+    auto: true
+    proxy-target-class: true
