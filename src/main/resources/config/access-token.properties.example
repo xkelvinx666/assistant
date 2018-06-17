@@ -1,0 +1,3 @@
+grant_type=获取access_token填写client_credential
+appid=填写appid
+secret=填写appsecret
