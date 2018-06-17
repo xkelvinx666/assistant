@@ -30,6 +30,5 @@ public class WeChatController {
 //        } else {
 //            signService.isIllegalSignature();
 //        }
-//    }
     }
 }
