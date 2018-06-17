@@ -22,6 +22,16 @@ public class AccessToken implements Serializable {
     private long expires_in = 0;
 
     /**
+     * 微信错误返回码
+     */
+    private int errcode = 0;
+
+    /**
+     * 微信错误信息
+     */
+    private String errmsg;
+
+    /**
      * 将微信返回的相对秒级过期时间转为绝对毫秒时间
      */
     public void setExpires_in(long relativeExpires) {
@@ -37,5 +47,9 @@ public class AccessToken implements Serializable {
      */
     public boolean isExpires() {
         return getExpires_in() < 10000;
+    }
+
+    public boolean isOK() {
+        return 0 == errcode;
     }
 }

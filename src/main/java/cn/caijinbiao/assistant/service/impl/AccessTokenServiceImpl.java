@@ -32,10 +32,14 @@ public class AccessTokenServiceImpl implements AccessTokenService {
     private AccessToken fetchAcessToken() {
         String url = "https://" + weChatApiProperties.DOMAIN + "/cgi-bin/token?grant_type=" + accessTokenProperties.GRANT_TYPE + "&appid=" + accessTokenProperties.getAppId() + "&secret=" + accessTokenProperties.getSecret();
         ResponseEntity<AccessToken> responseEntity = restTemplate.getForEntity(url, AccessToken.class);
-        if(HttpStatus.OK == responseEntity.getStatusCode()) {
+        if(HttpStatus.OK == responseEntity.getStatusCode()  && responseEntity.getBody().isOK()) {
             return responseEntity.getBody();
-        } else {
+        } else if(HttpStatus.OK != responseEntity.getStatusCode()){
+            // HTTP状态码不是200时打印完整信息
             throw new CheckException("获取access_token失败" + responseEntity.toString());
+        } else {
+            AccessToken accessToken = responseEntity.getBody();
+            throw new CheckException("获取access_token失败" + " errcode :" + accessToken.getErrcode() + " errmsg :" + accessToken.getErrmsg());
         }
     }
 
