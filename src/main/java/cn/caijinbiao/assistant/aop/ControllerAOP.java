@@ -21,7 +21,7 @@ import java.util.Arrays;
 @Aspect
 @Slf4j
 public class ControllerAOP {
-    @Around("execution(cn.caijinbiao.assistant.response.ResponseResult cn.caijinbiao.assistant.controller..*.*(..))")
+    @Around("execution(* cn.caijinbiao.assistant.controller..*.*(..))")
     public Object handlerJSON(ProceedingJoinPoint pjp) {
         long startTime = System.currentTimeMillis();
         try {
@@ -38,11 +38,9 @@ public class ControllerAOP {
      * 根据错误类型返回对应HTTP状态码
      * 对于不是自定义的异常进行log记录
      */
-    @AfterThrowing(throwing = "ex", pointcut = "execution(cn.caijinbiao.assistant.response.ResponseResult cn.caijinbiao.assistant.controller..*.*(..))")
-    public ResponseResult handlerException(JoinPoint pjp, Throwable ex) {
+    @AfterThrowing(throwing = "ex", pointcut = "execution(* cn.caijinbiao.assistant.controller..*.*(..))")
+    public String handlerException(JoinPoint pjp, Throwable ex) {
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
-        ResponseResult responseResult = new ResponseResult();
-        responseResult.setMessage(ex.getMessage());
         try {
             if (ex instanceof IsNullOrEmptyException) {
                 response.setStatus(400);
@@ -53,14 +51,14 @@ public class ControllerAOP {
             } else {
                 response.setStatus(500);
                 log.error("【异常通知】: " + pjp.getTarget().getClass().getName() + " 类的 " + pjp.getSignature().getName() + " 方法执行参数 " + Arrays.deepToString(pjp.getArgs()) + " 时遇见异常了" + ex.getMessage(), ex);
-                responseResult.setMessage("服务器异常，请重试或刷新页面重新操作");
+                return "服务器异常，请重试或刷新页面重新操作";
             }
         } catch (Exception e) {
             response.setStatus(500);
             log.error("【自动处理异常错误】内部错误: " + pjp.getSignature() + " 参数 : " + Arrays.toString(pjp.getArgs()) + " 实际错误为 ", ex);
             log.error("【自动处理异常错误】自动处理错误: ",e);
-            return new ResponseResult("服务器异常，请重试或刷新页面重新操作");
+            return "服务器异常，请重试或刷新页面重新操作";
         }
-        return responseResult;
+        return ex.getMessage();
     }
 }

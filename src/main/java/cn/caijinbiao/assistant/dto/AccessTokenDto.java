@@ -1,4 +1,4 @@
-package cn.caijinbiao.assistant.to;
+package cn.caijinbiao.assistant.dto;
 
 import lombok.Data;
 import org.springframework.context.annotation.Scope;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Scope("singleton")
 @Data
 @Component
-public class AccessToken implements Serializable {
+public class AccessTokenDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**

@@ -1,7 +1,7 @@
 package cn.caijinbiao.assistant.service;
 
-import cn.caijinbiao.assistant.to.AccessToken;
+import cn.caijinbiao.assistant.dto.AccessTokenDto;
 
 public interface AccessTokenService {
-    AccessToken getAccessToken();
+    AccessTokenDto getAccessTokenDto();
 }
