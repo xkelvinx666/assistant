@@ -36,7 +36,7 @@ public class WeChatController {
     }
 
     @PostMapping(produces = "application/xml; charset=UTF-8")
-    public PersonalMessageDto handleWeChatMessage(PersonalMessageDto personalMessageDto) {
+    public PersonalMessageDto handleWeChatMessage() {
         return personalMessageDto;
     }
 

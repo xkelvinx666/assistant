@@ -25,9 +25,9 @@ public class ControllerAOP {
     public Object handlerJSON(ProceedingJoinPoint pjp) {
         long startTime = System.currentTimeMillis();
         try {
-            ResponseResult<?> respondResult = (ResponseResult<?>) pjp.proceed();
+            Object obj =  pjp.proceed();
             log.info(pjp.getSignature() + " 使用耗时 : " + (System.currentTimeMillis() - startTime));
-            return respondResult;
+            return obj;
         } catch (Throwable e) {
             return handlerException(pjp, e);
         }
