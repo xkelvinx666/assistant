@@ -12,5 +12,4 @@ public class AssistantApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

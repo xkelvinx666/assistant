@@ -4,23 +4,26 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <classPathEntry location="mysql-connector-java-8.0.11.jar" />
+    <classPathEntry location="src/main/resources/config/mybatis-generator/mysql-connector-java-8.0.11.jar"/>
     <context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
-        <property name="beginningDelimiter" value="`" />
-        <property name="endingDelimiter" value="`" />
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
         <commentGenerator>
+            <!-- 将数据库中表的字段描述信息添加到注释 -->
+            <property name="addRemarkComments" value="true"/>
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库链接地址账号密码-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/d_assistant"
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/d_assistant?nullCatalogMeansCurrent=true"
                         userId="root" password="798998203">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="cn.caijinbiao.assistant.model" targetProject="src">
+        <javaModelGenerator targetPackage="cn.caijinbiao.assistant.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -29,9 +32,24 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
-        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.tentcoo.seat.mapper" targetProject="src" implementationPackage="com.tentcoo.seat.mapper.impl">
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="cn.caijinbiao.assistant.mapper"
+                             targetProject="src/main/java" implementationPackage="cn.caijinbiao.assistant.mapper.impl">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-        <table tableName="%"/>
+        <table schema="d_assistant" tableName="t_isp">
+            <generatedKey column="f_id" sqlStatement="Mysql" identity="true"/>
+            <domainObjectRenamingRule searchString="^T" replaceString=""/>
+            <columnRenamingRule searchString="^f" replaceString=""/>
+        </table>
+        <table schema="d_assistant" tableName="t_user">
+            <generatedKey column="f_id" sqlStatement="Mysql" identity="true"/>
+            <domainObjectRenamingRule searchString="^T" replaceString=""/>
+            <columnRenamingRule searchString="^f" replaceString=""/>
+        </table>
+        <table schema="d_assistant" tableName="t_translate">
+            <generatedKey column="f_id" sqlStatement="Mysql" identity="true"/>
+            <domainObjectRenamingRule searchString="^T" replaceString=""/>
+            <columnRenamingRule searchString="^f" replaceString=""/>
+        </table>
     </context>
 </generatorConfiguration>

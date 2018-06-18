@@ -3,7 +3,6 @@ package cn.caijinbiao.assistant.aop;
 import cn.caijinbiao.assistant.exception.CheckException;
 import cn.caijinbiao.assistant.exception.IsNullOrEmptyException;
 import cn.caijinbiao.assistant.exception.NoPermissionException;
-import cn.caijinbiao.assistant.response.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

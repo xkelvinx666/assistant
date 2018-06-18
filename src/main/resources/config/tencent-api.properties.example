@@ -1,0 +1,6 @@
+secretId='腾讯云api的secretId'
+secret_key='腾讯云api的secret_key'
+region=ap-guangzhou
+source=auto
+target=zh
+scene=doc

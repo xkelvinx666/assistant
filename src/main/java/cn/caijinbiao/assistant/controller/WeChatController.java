@@ -1,11 +1,11 @@
 package cn.caijinbiao.assistant.controller;
 
 import cn.caijinbiao.assistant.dto.BroadcastMessageDto;
-import cn.caijinbiao.assistant.dto.PersonalMessageDto;
+import cn.caijinbiao.assistant.dto.message.user.FromMessageDto;
+import cn.caijinbiao.assistant.dto.message.user.ToMessageDto;
 import cn.caijinbiao.assistant.response.ResponseResult;
-import cn.caijinbiao.assistant.service.AccessTokenService;
-import cn.caijinbiao.assistant.service.PreviewService;
-import cn.caijinbiao.assistant.service.SignService;
+import cn.caijinbiao.assistant.service.*;
+import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,11 @@ public class WeChatController {
     @Autowired
     PreviewService previewService;
     @Autowired
-    PersonalMessageDto personalMessageDto;
+    UserMessageService userMessageService;
+    @Autowired
+    TranslateService translateService;
+    @Autowired
+    FromMessageDto fromMessageDto;
 
     //验证是否来自微信服务器的消息
     @GetMapping(produces = "text/plain;charset=utf-8")
@@ -35,9 +39,10 @@ public class WeChatController {
         }
     }
 
-    @PostMapping(produces = "application/xml; charset=UTF-8")
-    public PersonalMessageDto handleWeChatMessage() {
-        return personalMessageDto;
+    @PostMapping(produces = "application/xml;charset=UTF-8")
+    public ToMessageDto handleWeChatMessage(@RequestBody FromMessageDto fromMessageDto) throws TencentCloudSDKException {
+        String content = translateService.fromText(fromMessageDto.getContent());
+        return userMessageService.sendContent(fromMessageDto, content);
     }
 
     @PostMapping(value = "preview")
