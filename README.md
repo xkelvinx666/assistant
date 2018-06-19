@@ -30,6 +30,7 @@
 2. 微信传输接口为XML格式，搜了几十页的Google，最后通过阅读JacksonXML的api找出了自动转换XML的办法
 3. 目前使用接口仅有腾讯云api
 4. 腾讯云api不支出java9+，spring boot2不支持java7-,所以只能用java8运行
+5. 由于mybatis generator生产的文件不带@Mapper声明，执行mvn clean package需要屏蔽pom.xml内的配置
 
 ## 运行
 1. 保证运行环境为java8
