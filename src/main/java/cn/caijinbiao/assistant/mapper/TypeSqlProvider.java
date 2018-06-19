@@ -1,64 +1,49 @@
 package cn.caijinbiao.assistant.mapper;
 
-import cn.caijinbiao.assistant.model.Translate;
-import cn.caijinbiao.assistant.model.TranslateExample.Criteria;
-import cn.caijinbiao.assistant.model.TranslateExample.Criterion;
-import cn.caijinbiao.assistant.model.TranslateExample;
+import cn.caijinbiao.assistant.model.Type;
+import cn.caijinbiao.assistant.model.TypeExample.Criteria;
+import cn.caijinbiao.assistant.model.TypeExample.Criterion;
+import cn.caijinbiao.assistant.model.TypeExample;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
 
-public class TranslateSqlProvider {
+public class TypeSqlProvider {
 
-    public String countByExample(TranslateExample example) {
+    public String countByExample(TypeExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("t_translate");
+        sql.SELECT("count(*)").FROM("t_type");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(TranslateExample example) {
+    public String deleteByExample(TypeExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("t_translate");
+        sql.DELETE_FROM("t_type");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(Translate record) {
+    public String insertSelective(Type record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("t_translate");
+        sql.INSERT_INTO("t_type");
         
-        if (record.getSource() != null) {
-            sql.VALUES("f_source", "#{source,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getTarget() != null) {
-            sql.VALUES("f_target", "#{target,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getType() != null) {
-            sql.VALUES("f_type", "#{type,jdbcType=BIGINT}");
-        }
-        
-        if (record.getIsp() != null) {
-            sql.VALUES("f_isp", "#{isp,jdbcType=BIGINT}");
+        if (record.getName() != null) {
+            sql.VALUES("f_name", "#{name,jdbcType=VARCHAR}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(TranslateExample example) {
+    public String selectByExample(TypeExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("f_id");
         } else {
             sql.SELECT("f_id");
         }
-        sql.SELECT("f_source");
-        sql.SELECT("f_target");
-        sql.SELECT("f_type");
-        sql.SELECT("f_isp");
-        sql.FROM("t_translate");
+        sql.SELECT("f_name");
+        sql.FROM("t_type");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -69,30 +54,18 @@ public class TranslateSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        Translate record = (Translate) parameter.get("record");
-        TranslateExample example = (TranslateExample) parameter.get("example");
+        Type record = (Type) parameter.get("record");
+        TypeExample example = (TypeExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("t_translate");
+        sql.UPDATE("t_type");
         
         if (record.getId() != null) {
             sql.SET("f_id = #{record.id,jdbcType=BIGINT}");
         }
         
-        if (record.getSource() != null) {
-            sql.SET("f_source = #{record.source,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getTarget() != null) {
-            sql.SET("f_target = #{record.target,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getType() != null) {
-            sql.SET("f_type = #{record.type,jdbcType=BIGINT}");
-        }
-        
-        if (record.getIsp() != null) {
-            sql.SET("f_isp = #{record.isp,jdbcType=BIGINT}");
+        if (record.getName() != null) {
+            sql.SET("f_name = #{record.name,jdbcType=VARCHAR}");
         }
         
         applyWhere(sql, example, true);
@@ -101,37 +74,22 @@ public class TranslateSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("t_translate");
+        sql.UPDATE("t_type");
         
         sql.SET("f_id = #{record.id,jdbcType=BIGINT}");
-        sql.SET("f_source = #{record.source,jdbcType=VARCHAR}");
-        sql.SET("f_target = #{record.target,jdbcType=VARCHAR}");
-        sql.SET("f_type = #{record.type,jdbcType=BIGINT}");
-        sql.SET("f_isp = #{record.isp,jdbcType=BIGINT}");
+        sql.SET("f_name = #{record.name,jdbcType=VARCHAR}");
         
-        TranslateExample example = (TranslateExample) parameter.get("example");
+        TypeExample example = (TypeExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Translate record) {
+    public String updateByPrimaryKeySelective(Type record) {
         SQL sql = new SQL();
-        sql.UPDATE("t_translate");
+        sql.UPDATE("t_type");
         
-        if (record.getSource() != null) {
-            sql.SET("f_source = #{source,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getTarget() != null) {
-            sql.SET("f_target = #{target,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getType() != null) {
-            sql.SET("f_type = #{type,jdbcType=BIGINT}");
-        }
-        
-        if (record.getIsp() != null) {
-            sql.SET("f_isp = #{isp,jdbcType=BIGINT}");
+        if (record.getName() != null) {
+            sql.SET("f_name = #{name,jdbcType=VARCHAR}");
         }
         
         sql.WHERE("f_id = #{id,jdbcType=BIGINT}");
@@ -139,7 +97,7 @@ public class TranslateSqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, TranslateExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, TypeExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

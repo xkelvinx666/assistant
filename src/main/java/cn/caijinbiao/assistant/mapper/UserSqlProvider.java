@@ -61,7 +61,7 @@ public class UserSqlProvider {
         sql.UPDATE("t_user");
         
         if (record.getId() != null) {
-            sql.SET("f_id = #{record.id,jdbcType=VARCHAR}");
+            sql.SET("f_id = #{record.id,jdbcType=BIGINT}");
         }
         
         if (record.getOpenId() != null) {
@@ -76,7 +76,7 @@ public class UserSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("t_user");
         
-        sql.SET("f_id = #{record.id,jdbcType=VARCHAR}");
+        sql.SET("f_id = #{record.id,jdbcType=BIGINT}");
         sql.SET("f_open_id = #{record.openId,jdbcType=VARCHAR}");
         
         UserExample example = (UserExample) parameter.get("example");
@@ -92,7 +92,7 @@ public class UserSqlProvider {
             sql.SET("f_open_id = #{openId,jdbcType=VARCHAR}");
         }
         
-        sql.WHERE("f_id = #{id,jdbcType=VARCHAR}");
+        sql.WHERE("f_id = #{id,jdbcType=BIGINT}");
         
         return sql.toString();
     }

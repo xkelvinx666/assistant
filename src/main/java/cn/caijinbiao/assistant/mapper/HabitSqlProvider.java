@@ -1,64 +1,59 @@
 package cn.caijinbiao.assistant.mapper;
 
-import cn.caijinbiao.assistant.model.Translate;
-import cn.caijinbiao.assistant.model.TranslateExample.Criteria;
-import cn.caijinbiao.assistant.model.TranslateExample.Criterion;
-import cn.caijinbiao.assistant.model.TranslateExample;
+import cn.caijinbiao.assistant.model.Habit;
+import cn.caijinbiao.assistant.model.HabitExample.Criteria;
+import cn.caijinbiao.assistant.model.HabitExample.Criterion;
+import cn.caijinbiao.assistant.model.HabitExample;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
 
-public class TranslateSqlProvider {
+public class HabitSqlProvider {
 
-    public String countByExample(TranslateExample example) {
+    public String countByExample(HabitExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("t_translate");
+        sql.SELECT("count(*)").FROM("t_habit");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(TranslateExample example) {
+    public String deleteByExample(HabitExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("t_translate");
+        sql.DELETE_FROM("t_habit");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(Translate record) {
+    public String insertSelective(Habit record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("t_translate");
+        sql.INSERT_INTO("t_habit");
         
-        if (record.getSource() != null) {
-            sql.VALUES("f_source", "#{source,jdbcType=VARCHAR}");
+        if (record.getTranslate() != null) {
+            sql.VALUES("f_translate", "#{translate,jdbcType=BIGINT}");
         }
         
-        if (record.getTarget() != null) {
-            sql.VALUES("f_target", "#{target,jdbcType=VARCHAR}");
+        if (record.getUser() != null) {
+            sql.VALUES("f_user", "#{user,jdbcType=BIGINT}");
         }
         
-        if (record.getType() != null) {
-            sql.VALUES("f_type", "#{type,jdbcType=BIGINT}");
-        }
-        
-        if (record.getIsp() != null) {
-            sql.VALUES("f_isp", "#{isp,jdbcType=BIGINT}");
+        if (record.getCount() != null) {
+            sql.VALUES("f_count", "#{count,jdbcType=INTEGER}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(TranslateExample example) {
+    public String selectByExample(HabitExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("f_id");
         } else {
             sql.SELECT("f_id");
         }
-        sql.SELECT("f_source");
-        sql.SELECT("f_target");
-        sql.SELECT("f_type");
-        sql.SELECT("f_isp");
-        sql.FROM("t_translate");
+        sql.SELECT("f_translate");
+        sql.SELECT("f_user");
+        sql.SELECT("f_count");
+        sql.FROM("t_habit");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -69,30 +64,26 @@ public class TranslateSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        Translate record = (Translate) parameter.get("record");
-        TranslateExample example = (TranslateExample) parameter.get("example");
+        Habit record = (Habit) parameter.get("record");
+        HabitExample example = (HabitExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("t_translate");
+        sql.UPDATE("t_habit");
         
         if (record.getId() != null) {
             sql.SET("f_id = #{record.id,jdbcType=BIGINT}");
         }
         
-        if (record.getSource() != null) {
-            sql.SET("f_source = #{record.source,jdbcType=VARCHAR}");
+        if (record.getTranslate() != null) {
+            sql.SET("f_translate = #{record.translate,jdbcType=BIGINT}");
         }
         
-        if (record.getTarget() != null) {
-            sql.SET("f_target = #{record.target,jdbcType=VARCHAR}");
+        if (record.getUser() != null) {
+            sql.SET("f_user = #{record.user,jdbcType=BIGINT}");
         }
         
-        if (record.getType() != null) {
-            sql.SET("f_type = #{record.type,jdbcType=BIGINT}");
-        }
-        
-        if (record.getIsp() != null) {
-            sql.SET("f_isp = #{record.isp,jdbcType=BIGINT}");
+        if (record.getCount() != null) {
+            sql.SET("f_count = #{record.count,jdbcType=INTEGER}");
         }
         
         applyWhere(sql, example, true);
@@ -101,37 +92,32 @@ public class TranslateSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("t_translate");
+        sql.UPDATE("t_habit");
         
         sql.SET("f_id = #{record.id,jdbcType=BIGINT}");
-        sql.SET("f_source = #{record.source,jdbcType=VARCHAR}");
-        sql.SET("f_target = #{record.target,jdbcType=VARCHAR}");
-        sql.SET("f_type = #{record.type,jdbcType=BIGINT}");
-        sql.SET("f_isp = #{record.isp,jdbcType=BIGINT}");
+        sql.SET("f_translate = #{record.translate,jdbcType=BIGINT}");
+        sql.SET("f_user = #{record.user,jdbcType=BIGINT}");
+        sql.SET("f_count = #{record.count,jdbcType=INTEGER}");
         
-        TranslateExample example = (TranslateExample) parameter.get("example");
+        HabitExample example = (HabitExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Translate record) {
+    public String updateByPrimaryKeySelective(Habit record) {
         SQL sql = new SQL();
-        sql.UPDATE("t_translate");
+        sql.UPDATE("t_habit");
         
-        if (record.getSource() != null) {
-            sql.SET("f_source = #{source,jdbcType=VARCHAR}");
+        if (record.getTranslate() != null) {
+            sql.SET("f_translate = #{translate,jdbcType=BIGINT}");
         }
         
-        if (record.getTarget() != null) {
-            sql.SET("f_target = #{target,jdbcType=VARCHAR}");
+        if (record.getUser() != null) {
+            sql.SET("f_user = #{user,jdbcType=BIGINT}");
         }
         
-        if (record.getType() != null) {
-            sql.SET("f_type = #{type,jdbcType=BIGINT}");
-        }
-        
-        if (record.getIsp() != null) {
-            sql.SET("f_isp = #{isp,jdbcType=BIGINT}");
+        if (record.getCount() != null) {
+            sql.SET("f_count = #{count,jdbcType=INTEGER}");
         }
         
         sql.WHERE("f_id = #{id,jdbcType=BIGINT}");
@@ -139,7 +125,7 @@ public class TranslateSqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, TranslateExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, HabitExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

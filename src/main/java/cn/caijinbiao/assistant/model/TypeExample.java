@@ -3,14 +3,14 @@ package cn.caijinbiao.assistant.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserExample {
+public class TypeExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public UserExample() {
+    public TypeExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,73 +164,73 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdIsNull() {
-            addCriterion("f_open_id is null");
+        public Criteria andNameIsNull() {
+            addCriterion("f_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdIsNotNull() {
-            addCriterion("f_open_id is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("f_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdEqualTo(String value) {
-            addCriterion("f_open_id =", value, "openId");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("f_name =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdNotEqualTo(String value) {
-            addCriterion("f_open_id <>", value, "openId");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("f_name <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdGreaterThan(String value) {
-            addCriterion("f_open_id >", value, "openId");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("f_name >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdGreaterThanOrEqualTo(String value) {
-            addCriterion("f_open_id >=", value, "openId");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("f_name >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdLessThan(String value) {
-            addCriterion("f_open_id <", value, "openId");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("f_name <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdLessThanOrEqualTo(String value) {
-            addCriterion("f_open_id <=", value, "openId");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("f_name <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdLike(String value) {
-            addCriterion("f_open_id like", value, "openId");
+        public Criteria andNameLike(String value) {
+            addCriterion("f_name like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdNotLike(String value) {
-            addCriterion("f_open_id not like", value, "openId");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("f_name not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdIn(List<String> values) {
-            addCriterion("f_open_id in", values, "openId");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("f_name in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdNotIn(List<String> values) {
-            addCriterion("f_open_id not in", values, "openId");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("f_name not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdBetween(String value1, String value2) {
-            addCriterion("f_open_id between", value1, value2, "openId");
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("f_name between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdNotBetween(String value1, String value2) {
-            addCriterion("f_open_id not between", value1, value2, "openId");
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("f_name not between", value1, value2, "name");
             return (Criteria) this;
         }
     }

@@ -3,8 +3,14 @@ package cn.caijinbiao.assistant.controller;
 import cn.caijinbiao.assistant.dto.BroadcastMessageDto;
 import cn.caijinbiao.assistant.dto.message.user.FromMessageDto;
 import cn.caijinbiao.assistant.dto.message.user.ToMessageDto;
+import cn.caijinbiao.assistant.model.Isp;
+import cn.caijinbiao.assistant.model.Translate;
+import cn.caijinbiao.assistant.model.Type;
+import cn.caijinbiao.assistant.model.User;
 import cn.caijinbiao.assistant.response.ResponseResult;
 import cn.caijinbiao.assistant.service.*;
+import cn.caijinbiao.assistant.service.impl.HabitServiceImpl;
+import cn.caijinbiao.assistant.util.CommonUtil;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +31,17 @@ public class WeChatController {
     @Autowired
     TranslateService translateService;
     @Autowired
+    TranslateService translateOperationService;
+    @Autowired
     FromMessageDto fromMessageDto;
+    @Autowired
+    UserService userService;
+    @Autowired
+    HabitService habitService;
+    @Autowired
+    TypeService typeService;
+    @Autowired
+    IspService ispService;
 
     //验证是否来自微信服务器的消息
     @GetMapping(produces = "text/plain;charset=utf-8")
@@ -40,9 +56,17 @@ public class WeChatController {
     }
 
     @PostMapping(produces = "application/xml;charset=UTF-8")
-    public ToMessageDto handleWeChatMessage(@RequestBody FromMessageDto fromMessageDto) throws TencentCloudSDKException {
-        String content = translateService.fromText(fromMessageDto.getContent());
-        return userMessageService.sendContent(fromMessageDto, content);
+    public Object handleWeChatMessage(@RequestBody FromMessageDto fromMessageDto) throws TencentCloudSDKException {
+        CommonUtil.isNotNullOrEmpty(fromMessageDto.getFromUserName(), "用户openid为空");
+        CommonUtil.isNotNullOrEmpty(fromMessageDto.getToUserName(), "目的openid为空");
+        CommonUtil.isNotNullOrEmpty(fromMessageDto.getMsgType(), "消息类型为空");
+
+        Type type = typeService.getType(fromMessageDto.getMsgType());
+        User user = userService.getUser(fromMessageDto.getFromUserName());
+        Isp isp = ispService.getIsp("腾讯云api");
+        Translate translate = translateService.getTranslate(fromMessageDto.getContent(), type.getId(), isp.getId());
+        habitService.updateHabit( translate.getId(), user.getId());
+        return userMessageService.sendContent(fromMessageDto, translate.getTarget());
     }
 
     @PostMapping(value = "preview")

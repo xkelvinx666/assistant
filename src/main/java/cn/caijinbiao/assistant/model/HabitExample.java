@@ -3,14 +3,14 @@ package cn.caijinbiao.assistant.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserExample {
+public class HabitExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public UserExample() {
+    public HabitExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,73 +164,183 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdIsNull() {
-            addCriterion("f_open_id is null");
+        public Criteria andTranslateIsNull() {
+            addCriterion("f_translate is null");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdIsNotNull() {
-            addCriterion("f_open_id is not null");
+        public Criteria andTranslateIsNotNull() {
+            addCriterion("f_translate is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdEqualTo(String value) {
-            addCriterion("f_open_id =", value, "openId");
+        public Criteria andTranslateEqualTo(Long value) {
+            addCriterion("f_translate =", value, "translate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdNotEqualTo(String value) {
-            addCriterion("f_open_id <>", value, "openId");
+        public Criteria andTranslateNotEqualTo(Long value) {
+            addCriterion("f_translate <>", value, "translate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdGreaterThan(String value) {
-            addCriterion("f_open_id >", value, "openId");
+        public Criteria andTranslateGreaterThan(Long value) {
+            addCriterion("f_translate >", value, "translate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdGreaterThanOrEqualTo(String value) {
-            addCriterion("f_open_id >=", value, "openId");
+        public Criteria andTranslateGreaterThanOrEqualTo(Long value) {
+            addCriterion("f_translate >=", value, "translate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdLessThan(String value) {
-            addCriterion("f_open_id <", value, "openId");
+        public Criteria andTranslateLessThan(Long value) {
+            addCriterion("f_translate <", value, "translate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdLessThanOrEqualTo(String value) {
-            addCriterion("f_open_id <=", value, "openId");
+        public Criteria andTranslateLessThanOrEqualTo(Long value) {
+            addCriterion("f_translate <=", value, "translate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdLike(String value) {
-            addCriterion("f_open_id like", value, "openId");
+        public Criteria andTranslateIn(List<Long> values) {
+            addCriterion("f_translate in", values, "translate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdNotLike(String value) {
-            addCriterion("f_open_id not like", value, "openId");
+        public Criteria andTranslateNotIn(List<Long> values) {
+            addCriterion("f_translate not in", values, "translate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdIn(List<String> values) {
-            addCriterion("f_open_id in", values, "openId");
+        public Criteria andTranslateBetween(Long value1, Long value2) {
+            addCriterion("f_translate between", value1, value2, "translate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdNotIn(List<String> values) {
-            addCriterion("f_open_id not in", values, "openId");
+        public Criteria andTranslateNotBetween(Long value1, Long value2) {
+            addCriterion("f_translate not between", value1, value2, "translate");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdBetween(String value1, String value2) {
-            addCriterion("f_open_id between", value1, value2, "openId");
+        public Criteria andUserIsNull() {
+            addCriterion("f_user is null");
             return (Criteria) this;
         }
 
-        public Criteria andOpenIdNotBetween(String value1, String value2) {
-            addCriterion("f_open_id not between", value1, value2, "openId");
+        public Criteria andUserIsNotNull() {
+            addCriterion("f_user is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserEqualTo(Long value) {
+            addCriterion("f_user =", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserNotEqualTo(Long value) {
+            addCriterion("f_user <>", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserGreaterThan(Long value) {
+            addCriterion("f_user >", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserGreaterThanOrEqualTo(Long value) {
+            addCriterion("f_user >=", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserLessThan(Long value) {
+            addCriterion("f_user <", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserLessThanOrEqualTo(Long value) {
+            addCriterion("f_user <=", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIn(List<Long> values) {
+            addCriterion("f_user in", values, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserNotIn(List<Long> values) {
+            addCriterion("f_user not in", values, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserBetween(Long value1, Long value2) {
+            addCriterion("f_user between", value1, value2, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserNotBetween(Long value1, Long value2) {
+            addCriterion("f_user not between", value1, value2, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountIsNull() {
+            addCriterion("f_count is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountIsNotNull() {
+            addCriterion("f_count is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountEqualTo(Integer value) {
+            addCriterion("f_count =", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountNotEqualTo(Integer value) {
+            addCriterion("f_count <>", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountGreaterThan(Integer value) {
+            addCriterion("f_count >", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("f_count >=", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountLessThan(Integer value) {
+            addCriterion("f_count <", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountLessThanOrEqualTo(Integer value) {
+            addCriterion("f_count <=", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountIn(List<Integer> values) {
+            addCriterion("f_count in", values, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountNotIn(List<Integer> values) {
+            addCriterion("f_count not in", values, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountBetween(Integer value1, Integer value2) {
+            addCriterion("f_count between", value1, value2, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("f_count not between", value1, value2, "count");
             return (Criteria) this;
         }
     }

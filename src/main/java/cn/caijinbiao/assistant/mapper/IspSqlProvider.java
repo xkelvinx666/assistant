@@ -61,7 +61,7 @@ public class IspSqlProvider {
         sql.UPDATE("t_isp");
         
         if (record.getId() != null) {
-            sql.SET("f_id = #{record.id,jdbcType=VARCHAR}");
+            sql.SET("f_id = #{record.id,jdbcType=BIGINT}");
         }
         
         if (record.getName() != null) {
@@ -76,7 +76,7 @@ public class IspSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("t_isp");
         
-        sql.SET("f_id = #{record.id,jdbcType=VARCHAR}");
+        sql.SET("f_id = #{record.id,jdbcType=BIGINT}");
         sql.SET("f_name = #{record.name,jdbcType=VARCHAR}");
         
         IspExample example = (IspExample) parameter.get("example");
@@ -92,7 +92,7 @@ public class IspSqlProvider {
             sql.SET("f_name = #{name,jdbcType=VARCHAR}");
         }
         
-        sql.WHERE("f_id = #{id,jdbcType=VARCHAR}");
+        sql.WHERE("f_id = #{id,jdbcType=BIGINT}");
         
         return sql.toString();
     }

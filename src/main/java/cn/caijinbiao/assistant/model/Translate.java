@@ -1,22 +1,22 @@
 package cn.caijinbiao.assistant.model;
 
 public class Translate {
-    private String id;
+    private Long id;
 
     private String source;
 
     private String target;
 
-    private String type;
+    private Long type;
 
-    private String isp;
+    private Long isp;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getSource() {
@@ -35,19 +35,19 @@ public class Translate {
         this.target = target == null ? null : target.trim();
     }
 
-    public String getType() {
+    public Long getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setType(Long type) {
+        this.type = type;
     }
 
-    public String getIsp() {
+    public Long getIsp() {
         return isp;
     }
 
-    public void setIsp(String isp) {
-        this.isp = isp == null ? null : isp.trim();
+    public void setIsp(Long isp) {
+        this.isp = isp;
     }
 }

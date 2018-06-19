@@ -114,62 +114,52 @@ public class TranslateExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(String value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("f_id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(String value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("f_id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(String value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("f_id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(String value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("f_id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(String value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("f_id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(String value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("f_id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLike(String value) {
-            addCriterion("f_id like", value, "id");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdNotLike(String value) {
-            addCriterion("f_id not like", value, "id");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdIn(List<String> values) {
+        public Criteria andIdIn(List<Long> values) {
             addCriterion("f_id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<String> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("f_id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(String value1, String value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("f_id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(String value1, String value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("f_id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -324,62 +314,52 @@ public class TranslateExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeEqualTo(String value) {
+        public Criteria andTypeEqualTo(Long value) {
             addCriterion("f_type =", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotEqualTo(String value) {
+        public Criteria andTypeNotEqualTo(Long value) {
             addCriterion("f_type <>", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThan(String value) {
+        public Criteria andTypeGreaterThan(Long value) {
             addCriterion("f_type >", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanOrEqualTo(String value) {
+        public Criteria andTypeGreaterThanOrEqualTo(Long value) {
             addCriterion("f_type >=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThan(String value) {
+        public Criteria andTypeLessThan(Long value) {
             addCriterion("f_type <", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanOrEqualTo(String value) {
+        public Criteria andTypeLessThanOrEqualTo(Long value) {
             addCriterion("f_type <=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLike(String value) {
-            addCriterion("f_type like", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeNotLike(String value) {
-            addCriterion("f_type not like", value, "type");
-            return (Criteria) this;
-        }
-
-        public Criteria andTypeIn(List<String> values) {
+        public Criteria andTypeIn(List<Long> values) {
             addCriterion("f_type in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotIn(List<String> values) {
+        public Criteria andTypeNotIn(List<Long> values) {
             addCriterion("f_type not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeBetween(String value1, String value2) {
+        public Criteria andTypeBetween(Long value1, Long value2) {
             addCriterion("f_type between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotBetween(String value1, String value2) {
+        public Criteria andTypeNotBetween(Long value1, Long value2) {
             addCriterion("f_type not between", value1, value2, "type");
             return (Criteria) this;
         }
@@ -394,62 +374,52 @@ public class TranslateExample {
             return (Criteria) this;
         }
 
-        public Criteria andIspEqualTo(String value) {
+        public Criteria andIspEqualTo(Long value) {
             addCriterion("f_isp =", value, "isp");
             return (Criteria) this;
         }
 
-        public Criteria andIspNotEqualTo(String value) {
+        public Criteria andIspNotEqualTo(Long value) {
             addCriterion("f_isp <>", value, "isp");
             return (Criteria) this;
         }
 
-        public Criteria andIspGreaterThan(String value) {
+        public Criteria andIspGreaterThan(Long value) {
             addCriterion("f_isp >", value, "isp");
             return (Criteria) this;
         }
 
-        public Criteria andIspGreaterThanOrEqualTo(String value) {
+        public Criteria andIspGreaterThanOrEqualTo(Long value) {
             addCriterion("f_isp >=", value, "isp");
             return (Criteria) this;
         }
 
-        public Criteria andIspLessThan(String value) {
+        public Criteria andIspLessThan(Long value) {
             addCriterion("f_isp <", value, "isp");
             return (Criteria) this;
         }
 
-        public Criteria andIspLessThanOrEqualTo(String value) {
+        public Criteria andIspLessThanOrEqualTo(Long value) {
             addCriterion("f_isp <=", value, "isp");
             return (Criteria) this;
         }
 
-        public Criteria andIspLike(String value) {
-            addCriterion("f_isp like", value, "isp");
-            return (Criteria) this;
-        }
-
-        public Criteria andIspNotLike(String value) {
-            addCriterion("f_isp not like", value, "isp");
-            return (Criteria) this;
-        }
-
-        public Criteria andIspIn(List<String> values) {
+        public Criteria andIspIn(List<Long> values) {
             addCriterion("f_isp in", values, "isp");
             return (Criteria) this;
         }
 
-        public Criteria andIspNotIn(List<String> values) {
+        public Criteria andIspNotIn(List<Long> values) {
             addCriterion("f_isp not in", values, "isp");
             return (Criteria) this;
         }
 
-        public Criteria andIspBetween(String value1, String value2) {
+        public Criteria andIspBetween(Long value1, Long value2) {
             addCriterion("f_isp between", value1, value2, "isp");
             return (Criteria) this;
         }
 
-        public Criteria andIspNotBetween(String value1, String value2) {
+        public Criteria andIspNotBetween(Long value1, Long value2) {
             addCriterion("f_isp not between", value1, value2, "isp");
             return (Criteria) this;
         }

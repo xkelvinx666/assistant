@@ -1,6 +1,6 @@
 package cn.caijinbiao.assistant.model;
 
-public class Isp {
+public class Type {
     private Long id;
 
     private String name;
