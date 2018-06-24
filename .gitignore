@@ -4,6 +4,7 @@ mvnw
 mvnw.cmd
 assistant.iml
 .mvn
+/logs/
 src/main/resources/config/access-token.properties
 src/main/resources/config/sign-token.properties
 src/main/resources/config/tencent-api.properties

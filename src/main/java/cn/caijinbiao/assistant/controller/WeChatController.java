@@ -14,6 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @Slf4j
 @RestController
 @RequestMapping("wechat")
@@ -38,6 +40,8 @@ public class WeChatController {
     TranslateService translateService;
     @Autowired
     HabitService habitService;
+    @Autowired
+    TranslateOperationService translateOperationService;
 
     //验证是否来自微信服务器的消息
     @GetMapping(produces = "text/plain;charset=utf-8")
@@ -52,15 +56,20 @@ public class WeChatController {
     }
 
     @PostMapping(produces = "application/xml;charset=UTF-8")
-    public Object handleWeChatMessage(@RequestBody FromMessageDto fromMessageDto) throws TencentCloudSDKException {
+    public Object handleWeChatMessage(@RequestBody FromMessageDto fromMessageDto) throws TencentCloudSDKException, IOException {
         CommonUtil.isNotNullOrEmpty(fromMessageDto.getFromUserName(), "用户openid为空");
         CommonUtil.isNotNullOrEmpty(fromMessageDto.getToUserName(), "目的openid为空");
         CommonUtil.isNotNullOrEmpty(fromMessageDto.getMsgType(), "消息类型为空");
+        String msgType = fromMessageDto.getMsgType();
 
-        Type type = typeService.promiseGetByName(fromMessageDto.getMsgType());
+        Type type = typeService.promiseGetByName(msgType);
         User user = userService.promiseGetByName(fromMessageDto.getFromUserName());
         Isp isp = ispService.promiseGetByName("腾讯云api");
-        Translate translate = translateService.promiseGetTranslate(fromMessageDto.getContent(), type.getId(), isp.getId());
+        String data = fromMessageDto.getContent();
+        if(null == data) {
+            data = fromMessageDto.getPicUrl();
+        }
+        Translate translate = translateService.promiseGetTranslate(data, type, isp);
         habitService.updateHabit(translate.getId(), user.getId());
         return userMessageService.sendContent(fromMessageDto, translate.getTarget());
     }
