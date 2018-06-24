@@ -13,11 +13,12 @@
         <result column="f_type" property="type" />
         <result column="f_isp" property="isp" />
         <result column="f_is_delete" property="isDelete" />
+        <result column="f_name" property="name" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        f_id, f_source, f_target, f_type, f_isp, f_is_delete
+        f_id, f_source, f_target, f_type, f_isp, f_is_delete, f_name
     </sql>
 
 </mapper>

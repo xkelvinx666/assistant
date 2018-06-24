@@ -32,8 +32,8 @@ public class User extends BaseEntity {
 
     @TableId(value = "f_id", type = IdType.AUTO)
     private Long id;
-    @TableField("f_open_id")
-    private String openId;
+    @TableField("f_name")
+    private String name;
     @TableField("f_is_delete")
     @TableLogic
     private Integer isDelete;

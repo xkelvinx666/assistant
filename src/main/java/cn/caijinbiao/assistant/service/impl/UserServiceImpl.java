@@ -3,6 +3,7 @@ package cn.caijinbiao.assistant.service.impl;
 import cn.caijinbiao.assistant.entity.User;
 import cn.caijinbiao.assistant.mapper.UserMapper;
 import cn.caijinbiao.assistant.service.UserService;
+import cn.caijinbiao.assistant.service.impl.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

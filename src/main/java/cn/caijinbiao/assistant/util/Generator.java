@@ -44,7 +44,8 @@ public class Generator {
                 .setBaseColumnList(true)
                 .setEnableCache(true)
                 .setAuthor("jinbiaocai")
-                .setOutputDir("src/main/java");
+                .setOutputDir("src/main/java")
+                .setFileOverride(true);
         if (!serviceNameStartWithI) {
             config.setServiceName("%sService");
         }

@@ -43,6 +43,8 @@ public class Translate extends BaseEntity {
     @TableField("f_is_delete")
     @TableLogic
     private Integer isDelete;
+    @TableField("f_name")
+    private String name;
 
 
 }

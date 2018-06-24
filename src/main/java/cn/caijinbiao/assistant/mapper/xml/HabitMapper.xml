@@ -12,11 +12,12 @@
         <result column="f_user" property="user" />
         <result column="f_count" property="count" />
         <result column="f_is_delete" property="isDelete" />
+        <result column="f_name" property="name" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        f_id, f_translate, f_user, f_count, f_is_delete
+        f_id, f_translate, f_user, f_count, f_is_delete, f_name
     </sql>
 
 </mapper>

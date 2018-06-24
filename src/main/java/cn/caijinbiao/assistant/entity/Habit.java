@@ -41,4 +41,8 @@ public class Habit extends BaseEntity {
     @TableField("f_is_delete")
     @TableLogic
     private Integer isDelete;
+    @TableField("f_name")
+    private String name;
+
+
 }
