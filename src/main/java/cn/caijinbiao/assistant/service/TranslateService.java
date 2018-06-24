@@ -1,9 +1,17 @@
 package cn.caijinbiao.assistant.service;
 
-import cn.caijinbiao.assistant.model.Translate;
+import cn.caijinbiao.assistant.entity.Translate;
+import cn.caijinbiao.assistant.service.BaseService;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 
-public interface TranslateService {
-    void addTranslate(String source, String target, long type, long isp);
-    Translate getTranslate(String source, long type, long isp) throws TencentCloudSDKException;
+/**
+ * <p>
+ * 服务类
+ * </p>
+ *
+ * @author jinbiaocai
+ * @since 2018-06-24
+ */
+public interface TranslateService extends BaseService<Translate> {
+    Translate promiseGetTranslate(String source, long type, long isp) throws TencentCloudSDKException;
 }

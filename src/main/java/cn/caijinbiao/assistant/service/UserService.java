@@ -1,8 +1,16 @@
 package cn.caijinbiao.assistant.service;
 
-import cn.caijinbiao.assistant.model.User;
+import cn.caijinbiao.assistant.entity.User;
+import cn.caijinbiao.assistant.service.BaseService;
 
-public interface UserService {
-    int addUser(String openId);
-    User getUser(String openId);
+/**
+ * <p>
+ *  服务类
+ * </p>
+ *
+ * @author jinbiaocai
+ * @since 2018-06-24
+ */
+public interface UserService extends BaseService<User> {
+
 }

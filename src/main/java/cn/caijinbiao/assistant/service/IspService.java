@@ -1,8 +1,16 @@
 package cn.caijinbiao.assistant.service;
 
-import cn.caijinbiao.assistant.model.Isp;
+import cn.caijinbiao.assistant.entity.Isp;
+import cn.caijinbiao.assistant.service.BaseService;
 
-public interface IspService {
-    void addIsp(String name);
-    Isp getIsp(String name);
+/**
+ * <p>
+ *  服务类
+ * </p>
+ *
+ * @author jinbiaocai
+ * @since 2018-06-24
+ */
+public interface IspService extends BaseService<Isp> {
+
 }

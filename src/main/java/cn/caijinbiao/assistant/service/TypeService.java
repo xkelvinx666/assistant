@@ -1,8 +1,16 @@
 package cn.caijinbiao.assistant.service;
 
-import cn.caijinbiao.assistant.model.Type;
+import cn.caijinbiao.assistant.entity.Type;
+import cn.caijinbiao.assistant.service.BaseService;
 
-public interface TypeService {
-    void addType(String name);
-    Type getType(String name);
+/**
+ * <p>
+ *  服务类
+ * </p>
+ *
+ * @author jinbiaocai
+ * @since 2018-06-24
+ */
+public interface TypeService extends BaseService<Type> {
+
 }

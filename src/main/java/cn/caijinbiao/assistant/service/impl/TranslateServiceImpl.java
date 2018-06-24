@@ -1,46 +1,44 @@
 package cn.caijinbiao.assistant.service.impl;
 
+import cn.caijinbiao.assistant.entity.Translate;
 import cn.caijinbiao.assistant.mapper.TranslateMapper;
-import cn.caijinbiao.assistant.model.Translate;
-import cn.caijinbiao.assistant.model.TranslateExample;
-import cn.caijinbiao.assistant.service.TranslateOperationService;
 import cn.caijinbiao.assistant.service.TranslateService;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author jinbiaocai
+ * @since 2018-06-24
+ */
 @Service
-public class TranslateServiceImpl implements TranslateService {
-    @Autowired
-    TranslateMapper translateMapper;
-    @Autowired
-    TranslateOperationService translateOperationService;
+public class TranslateServiceImpl extends BaseServiceImpl<TranslateMapper, Translate> implements TranslateService {
 
-    @Override
-    public void addTranslate(String source, String target, long type, long isp) {
+    @Autowired
+    TranslateOperationServiceImpl translateOperationService;
+
+    public boolean addTranslate(String source, long type, long isp) throws TencentCloudSDKException {
         Translate translate = new Translate();
         translate.setSource(source);
-        translate.setTarget(target);
         translate.setType(type);
         translate.setIsp(isp);
-        translateMapper.insert(translate);
+        String target = translateOperationService.fromText(source);
+        translate.setTarget(target);
+        return insert(translate);
     }
 
     @Override
-    public Translate getTranslate(String source, long type, long isp) throws TencentCloudSDKException {
-        TranslateExample translateExample = new TranslateExample();
-        TranslateExample.Criteria criteria = translateExample.createCriteria();
-        criteria.andSourceEqualTo(source);
-        criteria.andTypeEqualTo(type);
-        criteria.andIspEqualTo(isp);
-        List<Translate> translates = translateMapper.selectByExample(translateExample);
-        if (null == translates || 0 == translates.size()) {
-            String target = translateOperationService.fromText(source);
-            addTranslate(source, target, type, isp);
-            translates = translateMapper.selectByExample(translateExample);
-        }
-        return translates.get(0);
+    public Translate promiseGetTranslate(String source, long type, long isp) throws TencentCloudSDKException {
+        Translate translate = selectOne(new EntityWrapper<Translate>()
+                .eq("f_source", source)
+                .eq("f_type", type)
+                .eq("f_isp", isp));
+        addTranslate(source, type, isp);
+        return translate;
     }
 }

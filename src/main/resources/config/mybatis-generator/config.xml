@@ -5,9 +5,26 @@
 
 <generatorConfiguration>
     <classPathEntry location="src/main/resources/config/mybatis-generator/mysql-connector-java-8.0.11.jar"/>
-    <context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+    <context id="MysqlContext" targetRuntime="tk.mybatis.mapper.generator.TkMyBatis3Impl" defaultModelType="flat">
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+
+        <!-- 生成的model实现Serializable借口 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+            <property name="suppressJavaInterface" value="false"/>
+        </plugin>
+
+        <!-- 自动生成equals方法和hashcode方法 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+
+        <!-- 该插件给实体类添加toString() -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+
         <commentGenerator>
             <!-- 将数据库中表的字段描述信息添加到注释 -->
             <property name="addRemarkComments" value="true"/>

@@ -1,41 +1,30 @@
 package cn.caijinbiao.assistant.service.impl;
 
+import cn.caijinbiao.assistant.entity.Habit;
 import cn.caijinbiao.assistant.mapper.HabitMapper;
-import cn.caijinbiao.assistant.model.Habit;
-import cn.caijinbiao.assistant.model.HabitExample;
 import cn.caijinbiao.assistant.service.HabitService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author jinbiaocai
+ * @since 2018-06-24
+ */
 @Service
-public class HabitServiceImpl implements HabitService {
-    @Autowired
-    HabitMapper habitMapper;
+public class HabitServiceImpl extends BaseServiceImpl<HabitMapper, Habit> implements HabitService {
 
     @Override
-    public void addHabit(long translate, long user) {
-        Habit habit = new Habit();
-        habit.setTranslate(translate);
-        habit.setUser(user);
-        habit.setCount(0);
-        habitMapper.insert(habit);
-    }
-
-    @Override
-    public void updateHabit(long translate, long user) {
-        HabitExample habitExample = new HabitExample();
-        HabitExample.Criteria criteria = habitExample.createCriteria();
-        criteria.andTranslateEqualTo(translate);
-        criteria.andUserEqualTo(user);
-        List<Habit> habits = habitMapper.selectByExample(habitExample);
-        if(null == habits || 0 == habits.size()) {
-            addHabit(translate, user);
-            habits = habitMapper.selectByExample(habitExample);
+    public Habit updateHabit(long translate, long user) {
+        Habit habit = selectOne(new EntityWrapper<Habit>()
+                .eq("f_translate", translate)
+                .eq("f_user", user));
+        if(null != habit) {
+            habit.setCount(habit.getCount() + 1);
         }
-        Habit habit = habits.get(0);
-        habit.setCount(habit.getCount() + 1);
-        habitMapper.updateByPrimaryKey(habit);
+        return habit;
     }
 }

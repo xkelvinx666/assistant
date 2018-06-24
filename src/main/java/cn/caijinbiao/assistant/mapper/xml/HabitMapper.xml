@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.caijinbiao.assistant.mapper.HabitMapper">
+
+    <!-- 开启二级缓存 -->
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.caijinbiao.assistant.entity.Habit">
+        <id column="f_id" property="id" />
+        <result column="f_translate" property="translate" />
+        <result column="f_user" property="user" />
+        <result column="f_count" property="count" />
+        <result column="f_is_delete" property="isDelete" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        f_id, f_translate, f_user, f_count, f_is_delete
+    </sql>
+
+</mapper>
