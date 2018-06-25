@@ -40,6 +40,8 @@
 - 对于数据传输皆有对应的Dto,To对象，容易观察出api的数据结构。
 - 使用HTTP状态码作为接口标准，详情可看Controller AOP
 - 自定义Exception类，对于已知的无意义报错不进行记录，只记录未知异常，并在接口返回处隐藏细节
+- 通用Dao与通用Service，使用泛型支持通用操作
+- mybatis-plus的代码生成器，自动生成service、dao、entity
 
 ## 遇到问题
 
@@ -47,15 +49,16 @@
 2. 微信传输接口为XML格式，搜了几十页的Google，最后通过阅读JacksonXML的api找出了自动转换XML的办法
 3. 目前使用接口仅有腾讯云api
 4. 腾讯云api不支出java9+，spring boot2不支持java7-,所以只能用java8运行
-5. 由于mybatis generator生产的文件不带@Mapper声明，执行mvn clean package需要屏蔽pom.xml内的配置
+5. ~~由于mybatis generator生产的文件不带@Mapper声明，执行mvn clean package需要屏蔽pom.xml内的配置~~
 6. 订阅后要求5s内回应，若是响应请求时的某个阶段时间过长会导致无法回应。
 
 ## 运行
 
 1. 保证运行环境为java8
-1. 将resource/config下的.example配置文件修改为自己所使用的配置
-2  在data文件夹内导入数据库sql文件
-4. 运行
+2. 将resource/config下的.example配置文件修改为自己所使用的配置
+3. 等待maven下载lib
+4. 在data文件夹内导入数据库sql文件
+5. 运行
 
 ## 测试
 
